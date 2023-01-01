@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+
+    <div class="board-container">
+        <div class="board-name">COMMUNITY</div>
+        <table id="board-table">
+            <thead>
+                <tr class="name">
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성일</th>
+                    <th>작성자</th>
+                </tr>
+            </thead>
+            <tbody id="board-table-body"></tbody>
+        </table>
+        <button type="button" class="writeButton">글쓰기</button>
+    </div>
+    <script src="../data/notices.js"></script>
+    <script>
+
+        for (let i = 0; i < notices_data.notices.length; i++) {
+
+            const notice = notices_data.notices[i];
+
+            const boardTable = document.getElementById("board-table-body");
+            boardTable.innerHTML += `
+                <tr>
+                    <td>${notice.idx}</td>
+                    <td><a href="../html/read.html?idx=${notice.idx}">${notice.title}</a></td>
+                    <td>${notice.created_at}</td>
+                    <td>${notice.writer}</td>
+                </tr>
+            `;
+        }
+    </script>
+</body>
+
+</html>

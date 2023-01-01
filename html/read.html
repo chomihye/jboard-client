@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+    <div class="read-container">
+        <div id="head-container">
+            <!-- <h1>버터크림 다이어리 후기</h1>
+            <div>2022-01-06</div>
+            <div>작성자 cream</div> -->
+        </div>
+        <p>
+            버터크림 다이어리를 샀습니다.
+            2023년 제품이고 만년다이어리는 아니에요
+
+            <!-- <img src="https://picsum.photos/id/684/600/400" alt=""> -->
+            홈페이지에서 샀고
+            가격은 배송비 포함 23000원입니다
+
+            내년에는 일기를 열심히 써 볼 예정입니다
+        </p>
+
+        <button type="button">글 수정</button>
+        <button type="button">글 삭제</button>
+    </div>
+</body>
+<script src="../data/notices.js"></script>
+<script>
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+        return false;
+    };
+
+    const current_idx = getUrlParameter('idx');
+
+    // for (i = 0; i < notices_data.notices.length; i++) {
+    //     const notice = notices_data.notices[i];
+    //     console.log(notice);
+
+    //     const headline = document.getElementById("head-container");
+        
+    //     if (notice.idx == current_idx) {
+    //         headline.innerHTML = `
+    //             <h1>${notice.title}</h1>
+    //             <div>${notice.created_at}</div>
+    //             <div>작성자 ${notice.writer}</div>
+    //         `
+    //     };
+    // }
+
+    let notice = "";
+    for(let i = 0; i < notices_data.notices.length; i++) {
+        if (notices_data.notices[i].idx == current_idx) {
+            notice = notices_data.notices[i];
+            break;
+        }
+    }
+
+    // 참고
+    // const notice = notices_data.notices.find(notice => notice.idx == current_idx);
+
+    let html = "";
+    if(!notice) {
+        html += "<h1>존재하지 않는 게시글입니다.</h1>";
+    } else {
+        html += `
+            <h1>${notice.title}</h1>
+            <div>${notice.created_at}</div>
+            <div>작성자 ${notice.writer}</div>
+        `;
+    }
+    const headline = document.getElementById("head-container");
+    headline.innerHTML = html;
+
+</script>
+
+</html>
