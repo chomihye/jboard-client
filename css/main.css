@@ -47,7 +47,7 @@ td {
   font-weight: 300;
 }
 
-.writeButton {
+.write-btn {
   display: flex;
   font-size: 20px;
   margin-left: auto;
@@ -59,7 +59,56 @@ td {
   font-weight: 700;
 }
 
+.click-btn {
+  color: white;
+}
+
 /* read */
-.read-container{
-  
+
+
+/* write */
+.write-container{
+  width: 60%;
+  margin: auto;
+}
+
+.headline{
+  display: flex;
+  justify-content: space-between;
+}
+.submit{
+  width: 100px;
+  height: 40px;
+  font-size: 20px;
+  align-items: center;
+}
+
+.write-head{
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+hr{
+  margin-bottom: 10px;
+}
+
+input::placeholder{
+  font-size: 20px;
+}
+.title{
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+.contents{
+  width: 100%;
+  height: 300px;
+  resize: none;
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+textarea::placeholder{
+   font-size: 20px;
 }
