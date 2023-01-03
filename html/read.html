@@ -12,23 +12,12 @@
 <body>
     <div class="read-container">
         <div id="head-container">
-            <!-- <h1>버터크림 다이어리 후기</h1>
-            <div>2022-01-06</div>
-            <div>작성자 cream</div> -->
         </div>
-        <p>
-            버터크림 다이어리를 샀습니다.
-            2023년 제품이고 만년다이어리는 아니에요
-
-            <!-- <img src="https://picsum.photos/id/684/600/400" alt=""> -->
-            홈페이지에서 샀고
-            가격은 배송비 포함 23000원입니다
-
-            내년에는 일기를 열심히 써 볼 예정입니다
-        </p>
-
-        <button type="button">글 수정</button>
-        <button type="button">글 삭제</button>
+        <hr>
+        <div class="btn">
+            <button type="button" class="modify-btn">수정</button>
+            <button type="button" class="delete-btn">삭제</button>
+        </div>
     </div>
 </body>
 <script src="../data/notices.js"></script>
@@ -56,7 +45,7 @@
     //     console.log(notice);
 
     //     const headline = document.getElementById("head-container");
-        
+
     //     if (notice.idx == current_idx) {
     //         headline.innerHTML = `
     //             <h1>${notice.title}</h1>
@@ -67,7 +56,7 @@
     // }
 
     let notice = "";
-    for(let i = 0; i < notices_data.notices.length; i++) {
+    for (let i = 0; i < notices_data.notices.length; i++) {
         if (notices_data.notices[i].idx == current_idx) {
             notice = notices_data.notices[i];
             break;
@@ -78,13 +67,17 @@
     // const notice = notices_data.notices.find(notice => notice.idx == current_idx);
 
     let html = "";
-    if(!notice) {
+    if (!notice) {
         html += "<h1>존재하지 않는 게시글입니다.</h1>";
     } else {
         html += `
             <h1>${notice.title}</h1>
+            
+            <div>작성자 : ${notice.writer}</div>
             <div>${notice.created_at}</div>
-            <div>작성자 ${notice.writer}</div>
+            <hr>
+            <img class="contents-img" src="${notice.img}" alt="${notice.title}">
+            <p>${notice.contents}</p>
         `;
     }
     const headline = document.getElementById("head-container");
