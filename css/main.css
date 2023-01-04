@@ -4,7 +4,7 @@
 
 a {
   text-decoration: none;
-  color: black;
+  color: inherit;
 }
 .board-container {
   width: 60%;
@@ -56,7 +56,7 @@ td {
   font-size: 20px;
   margin-left: auto;
   padding: 10px 15px;
-  border-radius: 20px;
+  border-radius: 10px;
   border: none;
   background-color: lightblue;
   color: white;
@@ -67,25 +67,50 @@ td {
   color: white;
 }
 
-/* read */
+/*------------------- read---------------- */
 .read-container {
   width: 60%;
   margin: auto;
 }
+.read-title {
+  margin-bottom: 10px;
+}
+.writer {
+  font-size: 20px;
+}
+.create-date {
+  color: #999;
+}
+.write-contents {
+  font-size: 20px;
+}
 
-.btn {
+.btn-box {
   display: flex;
   margin-left: auto;
   justify-content: flex-end;
 }
 
-.modify-btn {
-  margin-right: 20px;
-  width: 130px;
+.btn-box button:not(:last-child) {
+  margin-right: 7px;
 }
 
-/* write */
-.write-container {
+.notice-btn {
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #999;
+  border: none;
+  border-radius: 10px;
+}
+
+.notice-btn.primary {
+  color: white;
+  background-color: lightblue;
+}
+
+/*------------------- write -------------*/
+.write-container , .modify-container {
   width: 60%;
   margin: auto;
 }
@@ -95,15 +120,15 @@ td {
   justify-content: space-between;
 }
 .submit-btn {
-  width: 80px;
-  height: 40px;
   border: none;
   color: white;
   background-color: lightblue;
-  border-radius: 20px;
+  border-radius: 10px;
   margin-top: 20px;
   margin-bottom: 10px;
+  padding: 10px 15px;
   font-size: 20px;
+  font-weight: 700;
   align-items: center;
 }
 
@@ -113,7 +138,7 @@ td {
   margin-bottom: 10px;
 }
 hr {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 input::placeholder {
@@ -125,6 +150,7 @@ input::placeholder {
   margin-bottom: 20px;
   border: 1px solid #999;
   border-radius: 5px;
+  font-size: 20px;
 }
 .contents {
   width: 100%;
@@ -132,7 +158,11 @@ input::placeholder {
   resize: none;
   border: 1px solid #999;
   border-radius: 5px;
+  font-size: 20px;
 }
 textarea::placeholder {
   font-size: 20px;
 }
+
+/*------------------- modify -------------*/
+

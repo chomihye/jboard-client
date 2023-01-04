@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+    <div class="modify-container" id="modify-container">
+        <div class="headline">
+            <div class="write-head">글쓰기</div>
+            <button type="submit" class="submit-btn"><a href="">등록</a></button>
+        </div>
+        <hr>
+        <form action="">
+            <input type="text" class="title" id="title-input" required>
+            <textarea name="contents" class="contents" id ="contents-input" required></textarea>
+        </form>
+    </div>
+</body>
+<script src="../data/notices.js"></script>
+<script>
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+        return false;
+    };
+    const current_idx = getUrlParameter('idx');
+
+    let notice = "";
+    for (let i = 0; i < notices_data.notices.length; i++) {
+        if (notices_data.notices[i].idx == current_idx) {
+            notice = notices_data.notices[i];
+            break;
+        }
+    }
+
+    if(!notice){
+        const headline = document.getElementById("modify-container");
+        headline.innerHTML = "<h1>존재하지 않는 게시글입니다.</h1><hr>";
+    } else {
+        document.getElementById("title-input").value = `${notice.title}`;
+        document.getElementById("contents-input").value = `${notice.contents}`;
+    }
+   
+</script>
+
+</html>

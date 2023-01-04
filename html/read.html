@@ -10,13 +10,14 @@
 </head>
 
 <body>
-    <div class="read-container">
+    <div class="read-container" >
         <div id="head-container">
         </div>
         <hr>
-        <div class="btn">
-            <button type="button" class="modify-btn">수정</button>
-            <button type="button" class="delete-btn">삭제</button>
+        <div class="btn-box">
+            <button type="button" class="notice-btn primary">
+                <a href="javascript:void(0);" id="modify_btn">수정</a></button>
+            <button type="button" class="notice-btn">삭제</button>
         </div>
     </div>
 </body>
@@ -71,17 +72,22 @@
         html += "<h1>존재하지 않는 게시글입니다.</h1>";
     } else {
         html += `
-            <h1>${notice.title}</h1>
-            
-            <div>작성자 : ${notice.writer}</div>
-            <div>${notice.created_at}</div>
+            <h1 class ="read-title">${notice.title}</h1>
+            <div class ="writer">작성자 : ${notice.writer}</div>
+            <div class="create-date">${notice.created_at}</div>
             <hr>
             <img class="contents-img" src="${notice.img}" alt="${notice.title}">
-            <p>${notice.contents}</p>
+            <p class="write-contents">${notice.contents}</p>
         `;
     }
     const headline = document.getElementById("head-container");
     headline.innerHTML = html;
+
+    // 글 수정 페이지로 이동
+    document.getElementById("modify_btn").addEventListener("click", function(e) {
+        location.href = `./modify.html?idx=`+ current_idx;
+        
+    });
 
 </script>
 
