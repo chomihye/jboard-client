@@ -26,23 +26,41 @@
         </table>
         <button type="button" class="write-btn"><a href="../html/write.html" class="click-btn">글쓰기</button>
     </div>
-    <script src="../data/notices.js"></script>
+    
     <script>
 
-        for (let i = 0; i < notices_data.notices.length; i++) {
+        const xhr = new XMLHttpRequest();
 
-            const notice = notices_data.notices[i];
+        xhr.open('get', 'https://port-0-jboard-nestjs-3vw25lcbli3z9.gksl2.cloudtype.app/fb', true);
+        xhr.responseType = 'application/json';
 
-            const boardTable = document.getElementById("board-table-body");
-            boardTable.innerHTML += `
+        // 성공했을 때
+        xhr.onload = function () {
+            const response = JSON.parse(xhr.responseText);
+            console.log(response);
+
+            for (let i = 0; i < response.length; i++) {
+
+                const notice = response[i];
+            
+                const boardTable = document.getElementById("board-table-body");
+                boardTable.innerHTML += `
                 <tr>
-                    <td>${notice.idx}</td>
-                    <td><a href="../html/read.html?idx=${notice.idx}">${notice.title}</a></td>
-                    <td>${notice.created_at}</td>
+                    <td>${notice.id}</td>
+                    <td><a href="../html/read.html?id=${notice.id}">${notice.title}</a></td>
+                    <td>${notice.created_at.substring(0, 10)}</td>
                     <td>${notice.writer}</td>
                 </tr>
             `;
+            }
         }
+
+        // 실패했을 때
+        xhr.onerror = function () {
+            console.log(xhr.status, xhr.statusText);
+        }
+
+        xhr.send();
     </script>
 </body>
 
